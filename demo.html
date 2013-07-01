@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Js XML Tree Demo</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link href="css/jsxmltree.css?v=1.0.0" rel="stylesheet">
+	</head>
+	<body>
+		<div id="tree1"></div>
+
+		<hr style="clear: both;" />
+
+		<div id="tree2"></div>
+
+		<hr style="clear: both;" />
+
+		<p><span id="expand">展开树形列表1</span></p>
+		<p><span id="retract">收起树形列表1</span></p>
+
+		<script src="js/jquery.min.js?v=2.0.0"></script>
+		<script src="js/jsxmltree.js?v=1.0.0"></script>
+		<script>
+		$(document).ready(function() {
+			$("#tree1").jsxmltree({
+				"xmlurl": "demo.xml"
+			});
+
+			$("#tree2").jsxmltree({
+				"xmlurl": "demo.xml",
+				"checktype": "checkbox",
+				"icon": true
+			});
+		});
+
+		$("#expand").click(function() {
+			$("#tree1").expand();
+		});
+
+		$("#retract").click(function() {
+			$("#tree1").retract();
+		});
+		</script>
+	</body>
+</html>

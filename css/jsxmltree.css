@@ -1,0 +1,179 @@
+/*!
+ * Js XML Tree v1.0.0
+ * jsxmltree.css
+ *
+ * Copyright 2013 dfp.me
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+
+/* 组成一个节点的行的样式 */
+div.node-normal {
+	clear: both;
+}
+
+
+/* 组成一个节点的下级节点占位块的样式 */
+div.children-normal {
+	clear: both;
+}
+
+
+/* 组成一个节点的多种块级元素样式 */
+[class^="piece-"],[class*=" piece-"] {
+	float: left;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+
+/* 所有用到背景图片的样式 */
+[class^="piece-"][class*="-list"],
+[class^="piece-"][class*="-body-"],
+[class^="piece-"][class*="-bottom-"],
+[class^="piece-"][class*="-root-"],
+[class^="piece-"][class*="-top-"],
+[class^="piece-"][class*="-icon-"] {
+	background-image: url("../img/jsxmltree.png");
+	background-repeat: no-repeat;
+}
+
+
+/* 可以展开收起的节点 */
+[class$="-plus"],
+[class*="-plus "],
+[class$="-minus"],
+[class*="-minus "] {
+	cursor: pointer;
+}
+
+
+/* 节点的结构线样式 */
+span.piece-blank {
+	background-position: 0px 0px;
+}
+
+span.piece-list {
+	background-position: -20px 0px;
+}
+
+span.piece-body-minus {
+	background-position: -40px 0px;
+}
+
+span.piece-body-nochild {
+	background-position: -60px 0px;
+}
+
+span.piece-body-plus {
+	background-position: -80px 0px;
+}
+
+span.piece-bottom-minus {
+	background-position: -100px 0px;
+}
+
+span.piece-bottom-nochild {
+	background-position: -120px 0px;
+}
+
+span.piece-bottom-plus {
+	background-position: -140px 0px;
+}
+
+span.piece-root-minus {
+	background-position: -160px 0px;
+}
+
+span.piece-root-nochild {
+	background-position: -180px 0px;
+}
+
+span.piece-root-plus {
+	background-position: -0px -20px;
+}
+
+span.piece-top-minus {
+	background-position: -20px -20px;
+}
+
+span.piece-top-nochild {
+	background-position: -40px -20px;
+}
+
+span.piece-top-plus {
+	background-position: -60px -20px;
+}
+
+
+/* 节点的图标样式 */
+span.piece-icon-txt {
+	background-position: -180px -60px;
+}
+
+span.piece-icon-pdf {
+	background-position: -160px -60px;
+}
+
+span.piece-icon-excel {
+	background-position: -140px -60px;
+}
+
+span.piece-icon-ppt {
+	background-position: -120px -60px;
+}
+
+span.piece-icon-word {
+	background-position: -100px -60px;
+}
+
+span.piece-icon-rss {
+	background-position: -80px -60px;
+}
+
+span.piece-icon-role {
+	background-position: -60px -60px;
+}
+
+span.piece-icon-user {
+	background-position: -40px -60px;
+}
+
+span.piece-icon-set {
+	background-position: -20px -60px;
+}
+
+span.piece-icon-house {
+	background-position: 0px -60px;
+}
+
+
+/* 节点的文本样式 */
+span.piece-text {
+	width: auto;
+	height: 14px;
+	font-size: 12px;
+	color: #3f3f5f;
+	padding: 1px;
+	margin: 1px;
+	border: 1px solid #dfdfef;
+	background-color: #f9f9ff;
+	cursor: pointer;
+}
+
+span:hover.piece-text {
+	width: auto;
+	height: 14px;
+	font-size: 12px;
+	color: #0f0f3f;
+	padding: 1px;
+	margin: 1px;
+	border: 1px solid #afafcf;
+	background-color: #dfdfef;
+	cursor: pointer;
+	outline:#dfdfef solid 1px;
+}
+

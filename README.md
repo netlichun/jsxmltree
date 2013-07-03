@@ -10,9 +10,10 @@ Js Xml Tree，是一个简洁易用的把xml文档转化为树形列表显示的
 $('#example').jsxmltree(options); // options采取json的写法提供。
 
 options列表：
+xmlurl: '';  // XML数据源的路径，必选参数
 checktype: 'radio', 'checkbox', undefined // 选择框类型，默认为undefined
 icon: true, false;  // 是否要输出图标（图标定义于XML的每个节点的icon属性），默认是false
-xmlurl: '';  // XML数据源的路径，必选参数
+expand: true, false;  // 输出后是否默认展开，默认是false
 
 
 其他接口：

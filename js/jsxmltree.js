@@ -39,6 +39,10 @@ $.fn.jsxmltree = function(options) {
 				$(this).attr("node-sn", "0");  // 初始化根节点的顺序号
 				obj.attr("html", "{jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children}");
 				obj.html($(this).treeInit(obj, options));  // 树形目录初始化
+
+				if(options.expand == true) {  // 是否默认展开
+					$(obj).expand();
+				}
 			});
         },
         error: function (xmlHttpRequest, textStatus, errorThrown) {
@@ -75,50 +79,50 @@ $.fn.treeInit = function(obj, options) {
 			// 输出层次线
 			switch ($(nodes[i]).attr("piece-mode").substring(j, j + 1)) {
 				case "0":
-					nodeHtml += "<span class=\"piece-blank\"></span>";
+					nodeHtml += "<div class=\"piece-blank\"></div>";
 					break;
 
 				case "1":
-					nodeHtml += "<span class=\"piece-list\"></span>";
+					nodeHtml += "<div class=\"piece-list\"></div>";
 					break;
 
 				case "2":
-					nodeHtml += "<span class=\"piece-body-nochild\"></span>";
+					nodeHtml += "<div class=\"piece-body-nochild\"></div>";
 					break;
 
 				case "3":
-					nodeHtml += "<span class=\"piece-body-plus\" onclick=\"javascript:toggleNode(this);\"></span>";
+					nodeHtml += "<div class=\"piece-body-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
 					break;
 
 				case "4":
-					nodeHtml += "<span class=\"piece-top-nochild\"></span>";
+					nodeHtml += "<div class=\"piece-top-nochild\"></div>";
 					break;
 
 				case "5":
-					nodeHtml += "<span class=\"piece-top-plus\" onclick=\"javascript:toggleNode(this);\"></span>";
+					nodeHtml += "<div class=\"piece-top-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
 					break;
 
 				case "6":
-					nodeHtml += "<span class=\"piece-bottom-nochild\"></span>";
+					nodeHtml += "<div class=\"piece-bottom-nochild\"></div>";
 					break;
 
 				case "7":
-					nodeHtml += "<span class=\"piece-bottom-plus\" onclick=\"javascript:toggleNode(this);\"></span>";
+					nodeHtml += "<div class=\"piece-bottom-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
 					break;
 
 				case "8":
-					nodeHtml += "<span class=\"piece-root-nochild\"></span>";
+					nodeHtml += "<div class=\"piece-root-nochild\"></div>";
 					break;
 
 				case "9":
-					nodeHtml += "<span class=\"piece-root-plus\" onclick=\"javascript:toggleNode(this);\"></span>";
+					nodeHtml += "<div class=\"piece-root-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
 					break;
 			}
 		}
 
 		// 输出选项框
 		if (options.checktype == "checkbox" || options.checktype == "radio") {
-			nodeHtml += "<span class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
+			nodeHtml += "<div class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
 
 			if($(nodes[i]).attr("checked") != undefined && $(nodes[i]).attr("checked") == true) {
 				nodeHtml += " checked";
@@ -132,21 +136,21 @@ $.fn.treeInit = function(obj, options) {
 				nodeHtml += " value=\"" + $(nodes[i]).attr("value")+ "\"";
 			}
 
-			nodeHtml += " /></span>";
+			nodeHtml += " /></div>";
 		}
 
 		// 输出图标
 		if (options.icon == true || options.icon == "true") {
 			if($(nodes[i]).attr("icon") != undefined && $(nodes[i]).attr("icon") != "") {
-				nodeHtml += "<span class=\"" + $(nodes[i]).attr("icon") + "\"></span>";
+				nodeHtml += "<div class=\"" + $(nodes[i]).attr("icon") + "\"></div>";
 			}
 			else {
-				nodeHtml += "<span class=\"piece-icon-txt\"></span>";
+				nodeHtml += "<div class=\"piece-icon-txt\"></div>";
 			}
 		}
 
 		// 输出文本
-		nodeHtml += "<span class=\"piece-text\">" + $(nodes[i]).attr("text") + "</span>";
+		nodeHtml += "<div class=\"piece-text\">" + $(nodes[i]).attr("text") + "</div>";
 		nodeHtml += "</div>";
 
 		// 输出该节点的子节点占位区
@@ -261,11 +265,11 @@ function toggleNode(node) {
 /* 完全展开某个树形列表
  * ======================== */
 $.fn.expand = function () {
-	$(this).find("span[class$=-plus]").click();
+	$(this).find("[class$=-plus]").click();
 }
 
 /* 完全收起某个树形列表
  * ======================== */
 $.fn.retract = function () {
-	$(this).find("span[class$=-minus]").click();
+	$(this).find("[class$=-minus]").click();
 }

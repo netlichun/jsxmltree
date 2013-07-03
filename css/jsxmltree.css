@@ -10,13 +10,13 @@
 
 
 /* 组成一个节点的行的样式 */
-div.node-normal {
+.node-normal {
 	clear: both;
 }
 
 
 /* 组成一个节点的下级节点占位块的样式 */
-div.children-normal {
+.children-normal {
 	clear: both;
 }
 
@@ -52,128 +52,127 @@ div.children-normal {
 
 
 /* 节点的结构线样式 */
-span.piece-blank {
+.piece-blank {
 	background-position: 0px 0px;
 }
 
-span.piece-list {
+.piece-list {
 	background-position: -20px 0px;
 }
 
-span.piece-body-minus {
+.piece-body-minus {
 	background-position: -40px 0px;
 }
 
-span.piece-body-nochild {
+.piece-body-nochild {
 	background-position: -60px 0px;
 }
 
-span.piece-body-plus {
+.piece-body-plus {
 	background-position: -80px 0px;
 }
 
-span.piece-bottom-minus {
+.piece-bottom-minus {
 	background-position: -100px 0px;
 }
 
-span.piece-bottom-nochild {
+.piece-bottom-nochild {
 	background-position: -120px 0px;
 }
 
-span.piece-bottom-plus {
+.piece-bottom-plus {
 	background-position: -140px 0px;
 }
 
-span.piece-root-minus {
+.piece-root-minus {
 	background-position: -160px 0px;
 }
 
-span.piece-root-nochild {
+.piece-root-nochild {
 	background-position: -180px 0px;
 }
 
-span.piece-root-plus {
+.piece-root-plus {
 	background-position: -0px -20px;
 }
 
-span.piece-top-minus {
+.piece-top-minus {
 	background-position: -20px -20px;
 }
 
-span.piece-top-nochild {
+.piece-top-nochild {
 	background-position: -40px -20px;
 }
 
-span.piece-top-plus {
+.piece-top-plus {
 	background-position: -60px -20px;
 }
 
 
 /* 节点的图标样式 */
-span.piece-icon-txt {
+.piece-icon-txt {
 	background-position: -180px -60px;
 }
 
-span.piece-icon-pdf {
+.piece-icon-pdf {
 	background-position: -160px -60px;
 }
 
-span.piece-icon-excel {
+.piece-icon-excel {
 	background-position: -140px -60px;
 }
 
-span.piece-icon-ppt {
+.piece-icon-ppt {
 	background-position: -120px -60px;
 }
 
-span.piece-icon-word {
+.piece-icon-word {
 	background-position: -100px -60px;
 }
 
-span.piece-icon-rss {
+.piece-icon-rss {
 	background-position: -80px -60px;
 }
 
-span.piece-icon-role {
+.piece-icon-role {
 	background-position: -60px -60px;
 }
 
-span.piece-icon-user {
+.piece-icon-user {
 	background-position: -40px -60px;
 }
 
-span.piece-icon-set {
+.piece-icon-set {
 	background-position: -20px -60px;
 }
 
-span.piece-icon-house {
+.piece-icon-house {
 	background-position: 0px -60px;
 }
 
 
 /* 节点的文本样式 */
-span.piece-text {
+.piece-text {
 	width: auto;
 	height: 14px;
 	font-size: 12px;
-	color: #3f3f5f;
-	padding: 1px;
-	margin: 1px;
-	border: 1px solid #dfdfef;
-	background-color: #f9f9ff;
+	color: #3f3f8f;
+	padding: 1px 0px;
+	margin: 1px 0px;
+	border: 1px solid #efefef;
+	background-color: #fcfcfc;
 	cursor: pointer;
 }
 
-span:hover.piece-text {
+.piece-text:hover {
 	width: auto;
 	height: 14px;
 	font-size: 12px;
-	color: #0f0f3f;
-	padding: 1px;
-	margin: 1px;
-	border: 1px solid #afafcf;
-	background-color: #dfdfef;
+	color: #3f3f8f;
+	padding: 1px 0px;
+	margin: 1px 0px;
+	border: 1px solid #cfcfcf;
+	background-color: #efefef;
 	cursor: pointer;
-	outline:#dfdfef solid 1px;
 }
 

@@ -24,7 +24,7 @@
 $.fn.jsxmltree = function(options) {
 
 	var obj = $(this);
-	if(obj.attr("id") == undefined) {
+	if (obj.attr("id") == undefined) {
 		alert("引用错误！必须在一个定义了 id 的 div 中使用 $('#example').jsxmltree() 的方式调用本插件！");
 		return;
 	}
@@ -40,7 +40,7 @@ $.fn.jsxmltree = function(options) {
 				obj.attr("html", "{jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children}");
 				obj.html($(this).treeInit(obj, options));  // 树形目录初始化
 
-				if(options.expand == true) {  // 是否默认展开
+				if (options.expand == true) {  // 是否默认展开
 					$(obj).expand();
 				}
 			});
@@ -124,11 +124,11 @@ $.fn.treeInit = function(obj, options) {
 		if (options.checktype == "checkbox" || options.checktype == "radio") {
 			nodeHtml += "<div class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
 
-			if($(nodes[i]).attr("checked") != undefined && $(nodes[i]).attr("checked") == true) {
+			if($(nodes[i]).attr("checked") == "true") {
 				nodeHtml += " checked";
 			}
 
-			if($(nodes[i]).attr("disabled") != undefined && $(nodes[i]).attr("disabled") == true) {
+			if($(nodes[i]).attr("disabled") == "true") {
 				nodeHtml += " disabled";
 			}
 
@@ -136,11 +136,15 @@ $.fn.treeInit = function(obj, options) {
 				nodeHtml += " value=\"" + $(nodes[i]).attr("value")+ "\"";
 			}
 
+			if($(nodes[i]).attr("text") != undefined) {
+				nodeHtml += " text=\"" + $(nodes[i]).attr("text")+ "\"";
+			}
+
 			nodeHtml += " /></div>";
 		}
 
 		// 输出图标
-		if (options.icon == true || options.icon == "true") {
+		if (options.icon == true) {
 			if($(nodes[i]).attr("icon") != undefined && $(nodes[i]).attr("icon") != "") {
 				nodeHtml += "<div class=\"" + $(nodes[i]).attr("icon") + "\"></div>";
 			}
@@ -150,14 +154,31 @@ $.fn.treeInit = function(obj, options) {
 		}
 
 		// 输出文本
-		nodeHtml += "<div class=\"piece-text\">" + $(nodes[i]).attr("text") + "</div>";
-		nodeHtml += "</div>";
+		//alert($(nodes[i]).attr("href"));
+		if ($(nodes[i]).attr("href") != undefined) {
+			if ($(nodes[i]).attr("target") != undefined) {
+				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\" target=\"" + $(nodes[i]).attr("target") + "\">" + $(nodes[i]).attr("text") + "</a>";
+				alert("kk");
+			}
+			else {
+				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\">" + $(nodes[i]).attr("text") + "</a>";
+			}
+		}
+		else {
+			if (options.checktype == "checkbox" || options.checktype == "radio") {
+				nodeHtml += "<label class=\"piece-text\" for=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\">" + $(nodes[i]).attr("text") + "</label>";
+			}
+			else {
+				nodeHtml += "<div class=\"piece-text\">" + $(nodes[i]).attr("text") + "</div>";
+			}
+		}
+
+		nodeHtml += "</div>";  // 当前节点的div结束标记
 
 		// 输出该节点的子节点占位区
 		nodeHtml += "<div class=\"children-normal\" id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children\" style=\"display: none\">";
 		nodeHtml += "{jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children}"; // 输出该节点的子节点替换位
 		nodeHtml += "</div>";
-
 	}
 
 	// ===2、使用获取的下级节点HTML代码替换模版中当前节点的占位符
@@ -223,7 +244,7 @@ $.fn.getPieceMode = function(options) {
 	var pieceMode = "";
 
 	var pieceParent = $(options.parent).attr("piece-mode");
-	if(pieceParent != undefined && pieceParent != "") {
+	if (pieceParent != undefined && pieceParent != "") {
 		for (var i = 0; i < pieceParent.length; i++) {
 			// 假如父节点不是尾节点或空白，则继承父节点信息，输出竖线
 			if (pieceParent.substring(i, i + 1) != "7" && pieceParent.substring(i, i + 1) != "0") {
@@ -244,16 +265,16 @@ $.fn.getPieceMode = function(options) {
 
 
 /* 点击展开或收起某个节点
- * ======================== */
+ * ========================== */
 function toggleNode(node) {
 
-	if($(node).attr("class").indexOf("plus") > -1) {
+	if ($(node).attr("class").indexOf("plus") > -1) {
 		var currentClass = $(node).attr("class");
 		$(node).removeClass(currentClass);
 		$(node).addClass(currentClass.replace("plus", "minus"));
 		$("#" + $(node).parent().attr("id") + "-children").fadeIn("fast");
 	}
-	else if($(node).attr("class").indexOf("minus") > -1) {
+	else if ($(node).attr("class").indexOf("minus") > -1) {
 		var currentClass = $(node).attr("class");
 		$(node).removeClass(currentClass);
 		$(node).addClass(currentClass.replace("minus", "plus"));
@@ -263,13 +284,82 @@ function toggleNode(node) {
 
 
 /* 完全展开某个树形列表
- * ======================== */
+ * ============================ */
 $.fn.expand = function () {
 	$(this).find("[class$=-plus]").click();
 }
 
 /* 完全收起某个树形列表
- * ======================== */
+ * ============================ */
 $.fn.retract = function () {
 	$(this).find("[class$=-minus]").click();
+}
+
+/* 全选某个树形列表中所有节点（在 checktype == 'checkbox' 时有效）
+ * ============================ */
+$.fn.allcheck = function () {
+	$(this).expand();
+	$(this).find(":checkbox").each(function () {
+		if ($(this).prop("disabled") != true)
+		{
+			$(this).prop("checked", true);
+		}
+	});
+}
+
+/* 全不选某个树形列表中所有节点（在 checktype == 'checkbox' 时有效）
+ * ============================ */
+$.fn.alluncheck = function () {
+	$(this).expand();
+	$(this).find(":checkbox").each(function () {
+		$(this).prop("checked", false);
+	});
+}
+
+/* 获取选中节点的值（在 checktype != null 时有效，多个值用逗号隔开）
+ * ============================ */
+$.fn.getvalues = function () {
+	var values = "";
+
+	$(this).find(":checkbox").each(function () {
+		if ($(this).prop("checked") == true) {
+			values += $(this).attr("value") + ",";
+		}
+	});
+
+	$(this).find(":radio").each(function () {
+		if ($(this).prop("checked") == true) {
+			values += $(this).attr("value") + ",";
+		}
+	});
+
+	if (values.length > 0) {
+		values = values.substring(0, values.length - 1);
+	}
+
+	return values;
+}
+
+/* 获取选中节点的显示文字（在 checktype != null 时有效，多个值用逗号隔开）
+ * ============================ */
+$.fn.gettexts = function () {
+	var texts = "";
+
+	$(this).find(":checkbox").each(function () {
+		if ($(this).prop("checked") == true) {
+			texts += $(this).attr("text") + ",";
+		}
+	});
+
+	$(this).find(":radio").each(function () {
+		if ($(this).prop("checked") == true) {
+			texts += $(this).attr("text") + ",";
+		}
+	});
+
+	if (texts.length > 0) {
+		texts = texts.substring(0, texts.length - 1);
+	}
+
+	return texts;
 }

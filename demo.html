@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title>Js XML Tree Demo</title>
@@ -19,6 +19,10 @@
 
 		<p><span id="expand" style="cursor: pointer;">展开树形列表1</span></p>
 		<p><span id="retract" style="cursor: pointer;">收起树形列表1</span></p>
+		<p><span id="allcheck" style="cursor: pointer;">全选树形列表2</span></p>
+		<p><span id="alluncheck" style="cursor: pointer;">全不选树形列表2</span></p>
+		<p><span id="getvalues" style="cursor: pointer;">获取树形列表2的选中项值</span></p>
+		<p><span id="gettexts" style="cursor: pointer;">获取树形列表2的选中项文本</span></p>
 
 		<span style="width: 300px; height: 200px; padding: 10px 0px; border: 10px solid #5f5f5f; background-color: #9f9f9f;">adadsfaa</span>
 
@@ -45,6 +49,22 @@
 
 		$("#retract").click(function() {
 			$("#tree1").retract();
+		});
+
+		$("#allcheck").click(function() {
+			$("#tree2").allcheck();
+		});
+
+		$("#alluncheck").click(function() {
+			$("#tree2").alluncheck();
+		});
+
+		$("#getvalues").click(function() {
+			alert($("#tree2").getvalues());
+		});
+
+		$("#gettexts").click(function() {
+			alert($("#tree2").gettexts());
 		});
 		</script>
 	</body>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
 	<node id="1" icon="piece-icon-house" text="一级节点第一个">
-		<node id="22" text="二级节点第二个"></node>
+		<node id="22" value="二级节点第二个" text="二级节点第二个"></node>
 	</node>
-	<node id="2" text="一级节点第二个" nodemenu="{访问网易:http://www.163.com, menu2:url2}">
+	<node id="2" text="一级节点第二个" href="http://www.163.com" target="blank">
 		<node id="21" text="二级节点第一个">
 			<node id="211" text="三级节点第一个"></node>
 		</node>
-		<node id="22" icon="piece-icon-ppt" text="二级节点第二个"></node>
-		<node id="22" text="二级节点第二个"></node>
+		<node id="22" icon="piece-icon-ppt" checked="true" text="二级节点第二个"></node>
+		<node id="22" text="二级节点第二个" disabled="true"></node>
 		<node id="22" text="二级节点第二个"></node>
 		<node id="23" text="二级节点第三个">
 			<node id="231" text="三级节点第二个"></node>

@@ -33,6 +33,8 @@ value - 可选属性，表示该节点的值（在 checktype != null 时有效�
 icon - 可选属性，表示该节点的图标（在 icon == true 时有效）
 checked - 可选属性，true, false，是否已选中（在 checktype != null 时有效）
 disabled - 可选属性，true, false，表示该节点是否禁用（在 checktype != null 时有效）
+href - 可选属性，表示该节点的链接或者要执行的动作
+target - 可选属性，表示节点的链接要跳转的框架（如"self"、"blank"或者某个iframe，在 url != null 并且是一个链接时有效）
 
 
 实现功能：

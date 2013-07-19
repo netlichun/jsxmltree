@@ -162,6 +162,7 @@
 	border: 1px solid #efefef;
 	background-color: #fcfcfc;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .piece-text:hover {
@@ -174,5 +175,6 @@
 	border: 1px solid #cfcfcf;
 	background-color: #efefef;
 	cursor: pointer;
+	text-decoration: none;
 }
 

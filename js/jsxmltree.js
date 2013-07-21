@@ -35,7 +35,7 @@ $.fn.jsxmltree = function(options) {
         url: options.xmlurl,
         dataType: "xml",
         success: function (data) {
-			$(data).find("root").each(function() {
+			$(data).children().each(function() {
 				$(this).attr("node-sn", "0");  // 初始化根节点的顺序号
 				obj.attr("html", "{jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children}");
 				obj.html($(this).treeInit(obj, options));  // 树形目录初始化
@@ -154,22 +154,23 @@ $.fn.treeInit = function(obj, options) {
 		}
 
 		// 输出文本
-		//alert($(nodes[i]).attr("href"));
 		if ($(nodes[i]).attr("href") != undefined) {
 			if ($(nodes[i]).attr("target") != undefined) {
 				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\" target=\"" + $(nodes[i]).attr("target") + "\">" + $(nodes[i]).attr("text") + "</a>";
-				alert("kk");
 			}
 			else {
 				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\">" + $(nodes[i]).attr("text") + "</a>";
 			}
+		}
+		else if ($(nodes[i]).attr("onclick") != undefined) {
+				nodeHtml += "<div class=\"piece-text\" onclick=\"javascript:" + $(nodes[i]).attr("onclick") + "\">" + $(nodes[i]).attr("text") + "</div>";
 		}
 		else {
 			if (options.checktype == "checkbox" || options.checktype == "radio") {
 				nodeHtml += "<label class=\"piece-text\" for=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\">" + $(nodes[i]).attr("text") + "</label>";
 			}
 			else {
-				nodeHtml += "<div class=\"piece-text\">" + $(nodes[i]).attr("text") + "</div>";
+				nodeHtml += "<div class=\"piece-text\" onclick=\"javascript:toggleClick(this);\">" + $(nodes[i]).attr("text") + "</div>";
 			}
 		}
 
@@ -266,22 +267,32 @@ $.fn.getPieceMode = function(options) {
 
 /* 点击展开或收起某个节点
  * ========================== */
-function toggleNode(node) {
+function toggleNode(obj) {
 
-	if ($(node).attr("class").indexOf("plus") > -1) {
-		var currentClass = $(node).attr("class");
-		$(node).removeClass(currentClass);
-		$(node).addClass(currentClass.replace("plus", "minus"));
-		$("#" + $(node).parent().attr("id") + "-children").fadeIn("fast");
+	if ($(obj).attr("class").indexOf("plus") > -1) {
+		var currentClass = $(obj).attr("class");
+		$(obj).removeClass(currentClass);
+		$(obj).addClass(currentClass.replace("plus", "minus"));
+		$("#" + $(obj).parent().attr("id") + "-children").fadeIn("fast");
 	}
-	else if ($(node).attr("class").indexOf("minus") > -1) {
-		var currentClass = $(node).attr("class");
-		$(node).removeClass(currentClass);
-		$(node).addClass(currentClass.replace("minus", "plus"));
-		$("#" + $(node).parent().attr("id") + "-children").fadeOut("fast");
+	else if ($(obj).attr("class").indexOf("minus") > -1) {
+		var currentClass = $(obj).attr("class");
+		$(obj).removeClass(currentClass);
+		$(obj).addClass(currentClass.replace("minus", "plus"));
+		$("#" + $(obj).parent().attr("id") + "-children").fadeOut("fast");
 	}
 }
 
+/* 点击展开或收起某个节点（通过点击节点文本）
+ * ========================== */
+function toggleClick(obj) {
+	if ($(obj).parent().children("[class$=-plus]")[0] != undefined) {
+		$(obj).parent().children("[class$=-plus]").click();
+	}
+	else if ($(obj).parent().children("[class$=-minus]")[0] != undefined) {
+		$(obj).parent().children("[class$=-minus]").click();
+	}
+}
 
 /* 完全展开某个树形列表
  * ============================ */
@@ -294,6 +305,7 @@ $.fn.expand = function () {
 $.fn.retract = function () {
 	$(this).find("[class$=-minus]").click();
 }
+
 
 /* 全选某个树形列表中所有节点（在 checktype == 'checkbox' 时有效）
  * ============================ */
@@ -315,6 +327,7 @@ $.fn.alluncheck = function () {
 		$(this).prop("checked", false);
 	});
 }
+
 
 /* 获取选中节点的值（在 checktype != null 时有效，多个值用逗号隔开）
  * ============================ */

@@ -156,7 +156,7 @@
 	width: auto;
 	height: 14px;
 	font-size: 12px;
-	color: #3f3f8f;
+	color: #3f3f5f;
 	padding: 1px 0px;
 	margin: 1px 0px;
 	border: 1px solid #efefef;
@@ -169,12 +169,11 @@
 	width: auto;
 	height: 14px;
 	font-size: 12px;
-	color: #3f3f8f;
+	color: #3f3f5f;
 	padding: 1px 0px;
 	margin: 1px 0px;
 	border: 1px solid #cfcfcf;
-	background-color: #efefef;
+	background-color: #f9f9f9;
 	cursor: pointer;
 	text-decoration: none;
 }
-

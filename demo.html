@@ -7,6 +7,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link href="css/jsxmltree.css?v=1.0.0" rel="stylesheet">
+		<link href="css/contextmenu.css?v=1.0.0" rel="stylesheet">
 	</head>
 	<body>
 		<div id="tree1"></div>
@@ -24,22 +25,23 @@
 		<p><span id="getvalues" style="cursor: pointer;">获取树形列表2的选中项值</span></p>
 		<p><span id="gettexts" style="cursor: pointer;">获取树形列表2的选中项文本</span></p>
 
-		<span style="width: 300px; height: 200px; padding: 10px 0px; border: 10px solid #5f5f5f; background-color: #9f9f9f;">adadsfaa</span>
+		<hr style="clear: both;" />
 
 		<script src="js/jquery.min.js?v=2.0.0"></script>
 		<script src="js/jsxmltree.js?v=1.0.0"></script>
+		<script src="js/contextmenu.js?v=1.0.0"></script>
 		<script>
 		$(document).ready(function() {
 			$("#tree1").jsxmltree({
-				"xmlurl": "demo.xml",
-				"icon": true
+				xmlurl: "demo.xml",
+				icon: true
 			});
 
 			$("#tree2").jsxmltree({
-				"xmlurl": "demo.xml",
-				"checktype": "checkbox",
-				"icon": true,
-				"expand": true
+				xmlurl: "demo.xml",
+				checktype: "checkbox",
+				icon: true,
+				expand: true
 			});
 		});
 
@@ -66,6 +68,18 @@
 		$("#gettexts").click(function() {
 			alert($("#tree2").gettexts());
 		});
+
+		function menu1(id, obj) {
+			showcontextmenu({
+				menu: [
+					{ text: "菜单1" + id, url: "javascript:alert('kkk')" },
+					{ text: "菜单2" + id, url: "http://www.163.com", target: "blank" },
+					{ text: "菜单3" + id, onclick: "alert('abc')" },
+					{ text: "菜单4" + id }
+				],
+				attach: obj
+			});
+		}
 		</script>
 	</body>
 </html>

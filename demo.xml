@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<root>
-	<node id="1" icon="piece-icon-house" text="一级节点第一个">
+<node>
+	<node id="1" icon="piece-icon-house" text="一级节点第一个" onclick="menu1('一级', this)">
 		<node id="22" value="二级节点第二个" text="二级节点第二个"></node>
 	</node>
-	<node id="2" text="一级节点第二个" href="http://www.163.com" target="blank">
+	<node id="2" text="一级节点第二个">
 		<node id="21" text="二级节点第一个">
 			<node id="211" text="三级节点第一个"></node>
 		</node>
@@ -15,7 +15,7 @@
 		</node>
 	</node>
 	<node id="3" icon="piece-icon-set" text="一级节点第三个">
-		<node id="31" text="二级节点第四个"></node>
+		<node id="31" text="二级节点第四个" href="http://www.163.com" target="blank"></node>
 	</node>
-	<node id="4" text="一级节点第四个"></node>
-</root>
+	<node id="4" text="一级节点第四个" onclick="menu1('一级节点第四个', this)"></node>
+</node>

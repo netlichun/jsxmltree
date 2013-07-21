@@ -154,10 +154,11 @@
 /* 节点的文本样式 */
 .piece-text {
 	width: auto;
-	height: 14px;
+	height: 12px;
 	font-size: 12px;
+	line-height: 12px;
 	color: #3f3f5f;
-	padding: 1px 0px;
+	padding: 2px 0px;
 	margin: 1px 0px;
 	border: 1px solid #efefef;
 	background-color: #fcfcfc;
@@ -167,10 +168,11 @@
 
 .piece-text:hover {
 	width: auto;
-	height: 14px;
+	height: 12px;
 	font-size: 12px;
+	line-height: 12px;
 	color: #3f3f5f;
-	padding: 1px 0px;
+	padding: 2px 0px;
 	margin: 1px 0px;
 	border: 1px solid #cfcfcf;
 	background-color: #f9f9f9;

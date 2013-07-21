@@ -69,5 +69,7 @@ showcontextmenu(options); // options 采取 json 的写法提供。
 options列表
 ----------------
 * menu: [{text: '菜单1', url: 'menu1.html', target: 'blank', onclick: 'action1'}, {text: '菜单1', url: 'menu1.html', target: 'blank', onclick: 'action2'}];  // 菜单列表的定义，必选参数
+
   > 菜单项的定义中，text是必选的， url、target、onclick 三个参数根据需要进行选择（其中 onclick 与 href 是互斥参数，只能存其一； target 是 href 的关联参数）。
+
 * attach: obj;  // 菜单所依附的对象，必选参数

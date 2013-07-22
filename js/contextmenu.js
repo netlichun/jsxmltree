@@ -20,7 +20,7 @@
 
 /* 输出上下文菜单容器
  * =========================================== */
-document.write("<div class=\"contextmenu-container\" onclick=\"javascript:delay=10;\" onmousemove=\"javascript:delay=10;\" onmouseover=\"javascript:timing=false;\" onmouseout=\"javascript:timing=true;\"></div>");
+document.write("<div class=\"contextmenu-container\" onclick=\"javascript:hiddencontextmenu();\" onmousemove=\"javascript:delay=10;\" onmouseover=\"javascript:timing=false;\" onmouseout=\"javascript:timing=true;\"></div>");
 
 /* 上下文菜单调用主函数
  * =========================================== */

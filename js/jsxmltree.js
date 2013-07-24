@@ -72,57 +72,57 @@ $.fn.treeInit = function(obj, options) {
 		}));
 
 		// 节点HTML
-		nodeHtml += "<div class=\"node-normal\" id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "\">";  // 当前节点的div起始标记
-		// 根据节点模式输出节点的结构线
+		nodeHtml += "<table class=\"node-table\" id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr>";  // 当前节点的div起始标记
 
+		// 根据节点模式输出节点的结构线
 		for (var j = 0; j < $(nodes[i]).attr("piece-mode").length; j++) {
 			// 输出层次线
 			switch ($(nodes[i]).attr("piece-mode").substring(j, j + 1)) {
 				case "0":
-					nodeHtml += "<div class=\"piece-blank\"></div>";
+					nodeHtml += "<td><span class=\"piece-blank\"></span></td>";
 					break;
 
 				case "1":
-					nodeHtml += "<div class=\"piece-list\"></div>";
+					nodeHtml += "<td><span class=\"piece-list\"></span></td>";
 					break;
 
 				case "2":
-					nodeHtml += "<div class=\"piece-body-nochild\"></div>";
+					nodeHtml += "<td><span class=\"piece-body-nochild\"></span></td>";
 					break;
 
 				case "3":
-					nodeHtml += "<div class=\"piece-body-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
+					nodeHtml += "<td><span class=\"piece-body-plus\" onclick=\"javascript:toggleNode(this);\"></span></td>";
 					break;
 
 				case "4":
-					nodeHtml += "<div class=\"piece-top-nochild\"></div>";
+					nodeHtml += "<td><span class=\"piece-top-nochild\"></span></td>";
 					break;
 
 				case "5":
-					nodeHtml += "<div class=\"piece-top-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
+					nodeHtml += "<td><span class=\"piece-top-plus\" onclick=\"javascript:toggleNode(this);\"></span></td>";
 					break;
 
 				case "6":
-					nodeHtml += "<div class=\"piece-bottom-nochild\"></div>";
+					nodeHtml += "<td><span class=\"piece-bottom-nochild\"></span></td>";
 					break;
 
 				case "7":
-					nodeHtml += "<div class=\"piece-bottom-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
+					nodeHtml += "<td><span class=\"piece-bottom-plus\" onclick=\"javascript:toggleNode(this);\"></span></td>";
 					break;
 
 				case "8":
-					nodeHtml += "<div class=\"piece-root-nochild\"></div>";
+					nodeHtml += "<td><span class=\"piece-root-nochild\"></span></td>";
 					break;
 
 				case "9":
-					nodeHtml += "<div class=\"piece-root-plus\" onclick=\"javascript:toggleNode(this);\"></div>";
+					nodeHtml += "<td><span class=\"piece-root-plus\" onclick=\"javascript:toggleNode(this);\"></span></td>";
 					break;
 			}
 		}
 
 		// 输出选项框
 		if (options.checktype == "checkbox" || options.checktype == "radio") {
-			nodeHtml += "<div class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
+			nodeHtml += "<td><span class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
 
 			if($(nodes[i]).attr("checked") == "true") {
 				nodeHtml += " checked";
@@ -140,44 +140,44 @@ $.fn.treeInit = function(obj, options) {
 				nodeHtml += " text=\"" + $(nodes[i]).attr("text")+ "\"";
 			}
 
-			nodeHtml += " /></div>";
+			nodeHtml += " /></span></td>";
 		}
 
 		// 输出图标
 		if (options.icon == true) {
 			if($(nodes[i]).attr("icon") != undefined && $(nodes[i]).attr("icon") != "") {
-				nodeHtml += "<div class=\"" + $(nodes[i]).attr("icon") + "\"></div>";
+				nodeHtml += "<td class=\"" + $(nodes[i]).attr("icon") + "\"><span class=\"" + $(nodes[i]).attr("icon") + "\"></span></td>";
 			}
 			else {
-				nodeHtml += "<div class=\"piece-icon-txt\"></div>";
+				nodeHtml += "<td><span class=\"piece-icon-txt\"></span></td>";
 			}
 		}
 
 		// 输出文本
 		if ($(nodes[i]).attr("href") != undefined) {
 			if ($(nodes[i]).attr("target") != undefined) {
-				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\" target=\"" + $(nodes[i]).attr("target") + "\">" + $(nodes[i]).attr("text") + "</a>";
+				nodeHtml += "<td><a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\" target=\"" + $(nodes[i]).attr("target") + "\">" + $(nodes[i]).attr("text") + "</a></td>";
 			}
 			else {
-				nodeHtml += "<a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\">" + $(nodes[i]).attr("text") + "</a>";
+				nodeHtml += "<td><a class=\"piece-text\" href=\"" + $(nodes[i]).attr("href") + "\">" + $(nodes[i]).attr("text") + "</a></td>";
 			}
 		}
 		else if ($(nodes[i]).attr("onclick") != undefined) {
-				nodeHtml += "<div class=\"piece-text\" onclick=\"javascript:" + $(nodes[i]).attr("onclick") + "\">" + $(nodes[i]).attr("text") + "</div>";
+				nodeHtml += "<td><span class=\"piece-text\" onclick=\"javascript:" + $(nodes[i]).attr("onclick") + "\">" + $(nodes[i]).attr("text") + "</span></td>";
 		}
 		else {
 			if (options.checktype == "checkbox" || options.checktype == "radio") {
-				nodeHtml += "<label class=\"piece-text\" for=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\">" + $(nodes[i]).attr("text") + "</label>";
+				nodeHtml += "<td><label class=\"piece-text\" for=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\">" + $(nodes[i]).attr("text") + "</label></td>";
 			}
 			else {
-				nodeHtml += "<div class=\"piece-text\" onclick=\"javascript:toggleClick(this);\">" + $(nodes[i]).attr("text") + "</div>";
+				nodeHtml += "<td><span class=\"piece-text\" onclick=\"javascript:toggleClick(this);\">" + $(nodes[i]).attr("text") + "</span></td>";
 			}
 		}
 
-		nodeHtml += "</div>";  // 当前节点的div结束标记
+		nodeHtml += "</tr></tbody></table>";  // 当前节点的div结束标记
 
 		// 输出该节点的子节点占位区
-		nodeHtml += "<div class=\"children-normal\" id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children\" style=\"display: none\">";
+		nodeHtml += "<div id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children\" style=\"display: none\">";
 		nodeHtml += "{jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children}"; // 输出该节点的子节点替换位
 		nodeHtml += "</div>";
 	}
@@ -268,29 +268,28 @@ $.fn.getPieceMode = function(options) {
 /* 点击展开或收起某个节点
  * ========================== */
 function toggleNode(obj) {
-
 	if ($(obj).attr("class").indexOf("plus") > -1) {
 		var currentClass = $(obj).attr("class");
 		$(obj).removeClass(currentClass);
 		$(obj).addClass(currentClass.replace("plus", "minus"));
-		$("#" + $(obj).parent().attr("id") + "-children").fadeIn("fast");
+		$("#" + $(obj).parent().parent().parent().parent().attr("id") + "-children").fadeIn("fast");
 	}
 	else if ($(obj).attr("class").indexOf("minus") > -1) {
 		var currentClass = $(obj).attr("class");
 		$(obj).removeClass(currentClass);
 		$(obj).addClass(currentClass.replace("minus", "plus"));
-		$("#" + $(obj).parent().attr("id") + "-children").fadeOut("fast");
+		$("#" + $(obj).parent().parent().parent().parent().attr("id") + "-children").fadeOut("fast");
 	}
 }
 
 /* 点击展开或收起某个节点（通过点击节点文本）
  * ========================== */
 function toggleClick(obj) {
-	if ($(obj).parent().children("[class$=-plus]")[0] != undefined) {
-		$(obj).parent().children("[class$=-plus]").click();
+	if ($(obj).parent().parent().children("[class$=-plus]")[0] != undefined) {
+		$(obj).parent().parent().children("[class$=-plus]").click();
 	}
-	else if ($(obj).parent().children("[class$=-minus]")[0] != undefined) {
-		$(obj).parent().children("[class$=-minus]").click();
+	else if ($(obj).parent().parent().children("[class$=-minus]")[0] != undefined) {
+		$(obj).parent().parent().children("[class$=-minus]").click();
 	}
 }
 

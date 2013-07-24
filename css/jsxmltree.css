@@ -8,25 +8,16 @@
  *
  */
 
-
-/* 组成一个节点的行的样式 */
-.node-normal {
-	clear: both;
+/* 组成一个节点的table容器样式 */
+.node-table {
+	border-collapse : collapse;
 }
-
-
-/* 组成一个节点的下级节点占位块的样式 */
-.children-normal {
-	clear: both;
-}
-
 
 /* 组成一个节点的多种块级元素样式 */
 [class^="piece-"],[class*=" piece-"] {
-	float: left;
-	display: inline-block;
 	width: 20px;
 	height: 20px;
+    display: block;
 }
 
 
@@ -157,13 +148,13 @@
 	height: 12px;
 	font-size: 12px;
 	line-height: 12px;
-	color: #3f3f5f;
 	padding: 2px 0px;
-	margin: 1px 0px;
-	border: 1px solid #efefef;
-	background-color: #fcfcfc;
+	color: #3f3f5f;
+	border: 1px solid #fcfcfc;
+	background-color: #fefefe;
 	cursor: pointer;
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 .piece-text:hover {
@@ -171,11 +162,11 @@
 	height: 12px;
 	font-size: 12px;
 	line-height: 12px;
-	color: #3f3f5f;
 	padding: 2px 0px;
-	margin: 1px 0px;
+	color: #3f3f5f;
 	border: 1px solid #cfcfcf;
-	background-color: #f9f9f9;
+	background-color: #efefef;
 	cursor: pointer;
 	text-decoration: none;
+	white-space: nowrap;
 }

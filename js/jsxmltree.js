@@ -37,8 +37,10 @@ $.fn.jsxmltree = function(options) {
         success: function (data) {
 			$(data).children().each(function() {
 				$(this).attr("node-sn", "0");  // 初始化根节点的顺序号
-				obj.attr("html", "{jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children}");
+				// 使用调用对象的一个属性作为生成HTML的临时存储区
+				obj.attr("html", "<div id=\"jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children\">{jsxmltree-" + obj.attr("id") + "-" + $(this).attr("node-sn") + "-children}</div>");
 				obj.html($(this).treeInit(obj, options));  // 树形目录初始化
+				obj.removeAttr("html");  // 移除临时属性
 
 				if (options.expand == true) {  // 是否默认展开
 					$(obj).expand();
@@ -176,10 +178,12 @@ $.fn.treeInit = function(obj, options) {
 
 		nodeHtml += "</tr></tbody></table>";  // 当前节点的div结束标记
 
-		// 输出该节点的子节点占位区
-		nodeHtml += "<div id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children\" style=\"display: none\">";
-		nodeHtml += "{jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children}"; // 输出该节点的子节点替换位
-		nodeHtml += "</div>";
+		// 如果当前节点有子节点，输出该节点的子节点占位区和占位符
+		if ($(nodes[i]).children().length > 0) {
+			nodeHtml += "<div id=\"jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children\" style=\"display: none\">";
+			nodeHtml += "{jsxmltree-" + obj.attr("id") + "-" + $(nodes[i]).attr("node-sn") + "-children}"; // 输出该节点的子节点替换位
+			nodeHtml += "</div>";
+		}
 	}
 
 	// ===2、使用获取的下级节点HTML代码替换模版中当前节点的占位符

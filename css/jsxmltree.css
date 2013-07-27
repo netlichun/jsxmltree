@@ -141,6 +141,10 @@
 	background-position: 0px -60px;
 }
 
+.piece-icon-menu {
+	background-position: 0px -80px;
+}
+
 
 /* 节点的文本样式 */
 .piece-text {

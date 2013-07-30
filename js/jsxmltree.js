@@ -124,7 +124,7 @@ $.fn.treeInit = function(obj, options) {
 
 		// 输出选项框
 		if (options.checktype == "checkbox" || options.checktype == "radio") {
-			nodeHtml += "<td><span class=\"piece-check\"><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
+			nodeHtml += "<td><input type=\"" + options.checktype + "\" id=\"jsxmltree-"  + obj.attr("id") + "-check-" + $(nodes[i]).attr("node-sn") + "\" name=\"jsxmltree-"  + obj.attr("id") + "-check\"";
 
 			if($(nodes[i]).attr("checked") == "true") {
 				nodeHtml += " checked";
@@ -142,13 +142,13 @@ $.fn.treeInit = function(obj, options) {
 				nodeHtml += " text=\"" + $(nodes[i]).attr("text")+ "\"";
 			}
 
-			nodeHtml += " /></span></td>";
+			nodeHtml += " /></td>";
 		}
 
 		// 输出图标
 		if (options.icon == true) {
 			if($(nodes[i]).attr("icon") != undefined && $(nodes[i]).attr("icon") != "") {
-				nodeHtml += "<td class=\"" + $(nodes[i]).attr("icon") + "\"><span class=\"" + $(nodes[i]).attr("icon") + "\"></span></td>";
+				nodeHtml += "<td><span class=\"" + $(nodes[i]).attr("icon") + "\"></span></td>";
 			}
 			else {
 				nodeHtml += "<td><span class=\"piece-icon-txt\"></span></td>";

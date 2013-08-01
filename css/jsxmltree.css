@@ -149,6 +149,14 @@
 	background-position: -20px -80px;
 }
 
+.piece-icon-folder {
+	background-position: -40px -80px;
+}
+
+.piece-icon-file {
+	background-position: -60px -80px;
+}
+
 
 /* 节点的文本样式 */
 .piece-text {

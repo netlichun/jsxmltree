@@ -289,11 +289,11 @@ function toggleNode(obj) {
 /* 点击展开或收起某个节点（通过点击节点文本）
  * ========================== */
 function toggleClick(obj) {
-	if ($(obj).parent().parent().children("[class$=-plus]")[0] != undefined) {
-		$(obj).parent().parent().children("[class$=-plus]").click();
+	if ($(obj).parent().parent().find("[class$=-plus]")[0] != undefined) {
+		$(obj).parent().parent().find("[class$=-plus]").click();
 	}
-	else if ($(obj).parent().parent().children("[class$=-minus]")[0] != undefined) {
-		$(obj).parent().parent().children("[class$=-minus]").click();
+	else if ($(obj).parent().parent().find("[class$=-minus]")[0] != undefined) {
+		$(obj).parent().parent().find("[class$=-minus]").click();
 	}
 }
 

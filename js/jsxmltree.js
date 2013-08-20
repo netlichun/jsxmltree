@@ -315,8 +315,7 @@ $.fn.retract = function () {
 $.fn.allcheck = function () {
 	$(this).expand();
 	$(this).find(":checkbox").each(function () {
-		if ($(this).prop("disabled") != true)
-		{
+		if ($(this).prop("disabled") != true) {
 			$(this).prop("checked", true);
 		}
 	});
@@ -327,7 +326,9 @@ $.fn.allcheck = function () {
 $.fn.alluncheck = function () {
 	$(this).expand();
 	$(this).find(":checkbox").each(function () {
-		$(this).prop("checked", false);
+		if ($(this).prop("disabled") != true) {
+			$(this).prop("checked", false);
+		}
 	});
 }
 

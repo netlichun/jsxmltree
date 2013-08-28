@@ -32,19 +32,28 @@ function showcontextmenu(options) {
 	var menuHtml = "";
 
 	$.each(options.menu, function (index) {
-		if (options.menu[index].url != undefined) {
-			if (options.menu[index].target != undefined) {
-				menuHtml += "<a class=\"contextmenu-menu\" href=\"" + options.menu[index].url + "\" target=\"" + options.menu[index].target + "\">" + options.menu[index].text + "</a>";
+
+		if(options.menu[index] != null) {
+
+			if (options.menu[index].url != undefined) {
+
+				if (options.menu[index].target != undefined) {
+
+					menuHtml += "<a class=\"contextmenu-menu\" href=\"" + options.menu[index].url + "\" target=\"" + options.menu[index].target + "\">" + options.menu[index].text + "</a>";
+				}
+				else {
+
+					menuHtml += "<a class=\"contextmenu-menu\" href=\"" + options.menu[index].url + "\">" + options.menu[index].text + "</a>";
+				}
+			}
+			else if (options.menu[index].onclick != undefined) {
+
+				menuHtml += "<div class=\"contextmenu-menu\" onclick=\"javascript:" + options.menu[index].onclick + "\">" + options.menu[index].text + "</div>";
 			}
 			else {
-				menuHtml += "<a class=\"contextmenu-menu\" href=\"" + options.menu[index].url + "\">" + options.menu[index].text + "</a>";
+
+				menuHtml += "<div class=\"contextmenu-menu\">" + options.menu[index].text + "</div>";
 			}
-		}
-		else if (options.menu[index].onclick != undefined) {
-			menuHtml += "<div class=\"contextmenu-menu\" onclick=\"javascript:" + options.menu[index].onclick + "\">" + options.menu[index].text + "</div>";
-		}
-		else {
-			menuHtml += "<div class=\"contextmenu-menu\">" + options.menu[index].text + "</div>";
 		}
 	});
 	$(".contextmenu-container").css("left", "0px");

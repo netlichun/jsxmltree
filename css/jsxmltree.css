@@ -157,6 +157,30 @@
 	background-position: -60px -80px;
 }
 
+.piece-icon-package {
+	background-position: -80px -80px;
+}
+
+.piece-icon-copyright {
+	background-position: -100px -80px;
+}
+
+.piece-icon-starfish {
+	background-position: -120px -80px;
+}
+
+.piece-icon-department {
+	background-position: -140px -80px;
+}
+
+.piece-icon-male {
+	background-position: -160px -80px;
+}
+
+.piece-icon-female {
+	background-position: -180px -80px;
+}
+
 
 /* 节点的文本样式 */
 .piece-text {

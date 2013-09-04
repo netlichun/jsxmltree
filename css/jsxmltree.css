@@ -181,6 +181,74 @@
 	background-position: -180px -80px;
 }
 
+.piece-icon-rar {
+	background-position: -0px -100px;
+}
+
+.piece-icon-zip {
+	background-position: -20px -100px;
+}
+
+.piece-icon-7z {
+	background-position: -40px -100px;
+}
+
+.piece-icon-operation {
+	background-position: -60px -100px;
+}
+
+.piece-icon-help {
+	background-position: -80px -100px;
+}
+
+.piece-icon-video {
+	background-position: -100px -100px;
+}
+
+.piece-icon-music {
+	background-position: -120px -100px;
+}
+
+.piece-icon-jpg {
+	background-position: -140px -100px;
+}
+
+.piece-icon-gif {
+	background-position: -160px -100px;
+}
+
+.piece-icon-png {
+	background-position: -180px -100px;
+}
+
+.piece-icon-bmp {
+	background-position: -0px -120px;
+}
+
+.piece-icon-tif {
+	background-position: -20px -120px;
+}
+
+.piece-icon-disc {
+	background-position: -40px -120px;
+}
+
+.piece-icon-dll {
+	background-position: -60px -120px;
+}
+
+.piece-icon-img {
+	background-position: -80px -120px;
+}
+
+.piece-icon-dir {
+	background-position: -100px -120px;
+}
+
+.piece-icon-win {
+	background-position: -120px -120px;
+}
+
 
 /* 节点的文本样式 */
 .piece-text {

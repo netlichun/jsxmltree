@@ -165,7 +165,12 @@ $.fn.treeInit = function(obj, options) {
 			}
 		}
 		else if ($(nodes[i]).attr("onclick") != undefined) {
+			if ($(nodes[i]).attr("ondblclick") != undefined) {
+				nodeHtml += "<td><span class=\"piece-text\" onclick=\"javascript:" + $(nodes[i]).attr("onclick") + "\" ondblclick=\"javascript:" + $(nodes[i]).attr("ondblclick") + "\">" + $(nodes[i]).attr("text") + "</span></td>";
+			}
+			else {
 				nodeHtml += "<td><span class=\"piece-text\" onclick=\"javascript:" + $(nodes[i]).attr("onclick") + "\">" + $(nodes[i]).attr("text") + "</span></td>";
+			}
 		}
 		else {
 			if (options.checktype == "checkbox" || options.checktype == "radio") {

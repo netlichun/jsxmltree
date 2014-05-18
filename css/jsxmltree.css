@@ -252,8 +252,8 @@
 
 /* 节点的文本样式 */
 .piece-text {
+    display: inline;
 	width: auto;
-	height: 12px;
 	font-size: 12px;
 	line-height: 12px;
 	padding: 2px 0px;
@@ -267,8 +267,8 @@
 }
 
 .piece-text:hover {
+    display: inline;
 	width: auto;
-	height: 12px;
 	font-size: 12px;
 	line-height: 12px;
 	padding: 2px 0px;

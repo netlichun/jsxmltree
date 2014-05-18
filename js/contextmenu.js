@@ -62,8 +62,8 @@ function showcontextmenu(options) {
 	$(".contextmenu-container").html(menuHtml);
 
 	// 根据菜单依附对象调整菜单位置
-	$(".contextmenu-container").css("left", $(options.attach).position().left + $(options.attach).width() + 4 + "px");
-	$(".contextmenu-container").css("top", $(options.attach).position().top + "px");
+	$(".contextmenu-container").css("left", $(options.attach).offset().left + $(options.attach).width() + 4 + "px");
+	$(".contextmenu-container").css("top", $(options.attach).offset().top + "px");
 
 	// 显示上下文菜单
 	$(".contextmenu-container").css("visibility", "visible");
